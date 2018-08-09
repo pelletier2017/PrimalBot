@@ -29,7 +29,7 @@ class ZergMacroDecider(AbstractDecider):
         if (self.bot.supply_used >= 15 and not self.bot.already_pending(HATCHERY)) or self.bot.minerals >= 400:
             return self.tasks.expand
 
-        if len(self.bot.units(DRONE)) <= num_hatchery * 10 and len(self.bot.units(DRONE)) <= 40:
+        if len(self.bot.units(DRONE)) <= num_hatchery * 10 and len(self.bot.units(DRONE)) <= 30:
             return self.tasks.drone
 
         if self.bot.units(SPAWNINGPOOL).ready.exists:
