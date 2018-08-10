@@ -44,6 +44,8 @@ class PrimalBot(sc2.BotAI):
         ]
 
     async def on_step(self, iteration):
+        if iteration == 0:
+            await self.chat_send("Hi I am PrimalBot")
 
         if iteration % (SKIPPED_MICRO_STEPS + 1) == 0:
             await self.micro()

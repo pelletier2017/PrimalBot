@@ -18,5 +18,5 @@ if __name__ == '__main__':
         print("Starting local game...")
         sc2.run_game(sc2.maps.get("16BitLE"), [
             bot,
-            Computer(Race.Protoss, Difficulty.Medium)
+            Computer(Race.Protoss, Difficulty.VeryEasy)
         ], realtime=False)

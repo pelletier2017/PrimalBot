@@ -24,8 +24,10 @@ class MicroTask(GameTask, ABC):
             await self._attack_point_with(point, attacker)
 
     async def _attack_point_with(self, point, attackers):
+        actions = []
         for unit in attackers:
-            await self.bot.do(unit.attack(point.position, queue=False))
+            actions.append(unit.attack(point.position, queue=False))
+        await self.bot.do_actions(actions)
 
     def _army(self):
         workers = self.bot.workers
