@@ -1,9 +1,9 @@
-from task.game_task import GameTask
+from task.abstract_task import AbstractTask
 from sc2.constants import DRONE, SPAWNINGPOOL, EXTRACTOR, ROACHWARREN, HATCHERY
 from abc import ABC, abstractmethod
 
 
-class Expand(GameTask):
+class Expand(AbstractTask):
 
     building = HATCHERY
 
@@ -17,7 +17,7 @@ class Expand(GameTask):
         await self.bot.expand_now()
 
 
-class ZergBuildingTask(GameTask, ABC):
+class ZergBuildingTask(AbstractTask, ABC):
 
     def __init__(self, sc2_bot):
         super().__init__(sc2_bot)

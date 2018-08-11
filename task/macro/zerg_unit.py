@@ -1,9 +1,9 @@
-from task.game_task import GameTask
+from task.abstract_task import AbstractTask
 from sc2.constants import LARVA, ZERGLING, DRONE, OVERLORD, SPAWNINGPOOL
 from abc import ABC, abstractmethod
 
 
-class ZergUnitTask(GameTask, ABC):
+class ZergUnitTask(AbstractTask, ABC):
 
     def __init__(self, sc2_bot):
         super().__init__(sc2_bot)

@@ -1,11 +1,11 @@
 from sc2.constants import PROBE, LARVA, OVERLORD, EGG, QUEEN
 import random
 
-from task.game_task import GameTask
+from task.abstract_task import AbstractTask
 from abc import ABC
 
 
-class MicroTask(GameTask, ABC):
+class MicroTask(AbstractTask, ABC):
 
     bot = None
 

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import sc2
 
 
-class GameTask(ABC):
+class AbstractTask(ABC):
 
     bot = None
 

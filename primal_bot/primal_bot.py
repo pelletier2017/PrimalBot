@@ -1,7 +1,7 @@
 import sc2
-from task.micro import *
-from task.macro.zerg_unit_task import *
-from task.macro.zerg_building_task import *
+from task.micro.entire_army import *
+from task.macro.zerg_unit import *
+from task.macro.zerg_building import *
 from decider.random_decider import *
 from decider.zerg_macro_decider import ZergMacroDecider
 
@@ -64,17 +64,22 @@ class PrimalBot(sc2.BotAI):
     async def macro(self):
         self.macro_tick += 1
         if self.macro_task is None or self.macro_tick >= MACRO_TIMEOUT:
-
             if self.macro_tick >= MACRO_TIMEOUT:
                 print("Macro TIMEOUT: " + str(self.macro_task))
-
-            self.macro_task = self.macro_decider.choose(self.macro_options, self.state)
-            print("Macro CHOOSE: " + str(self.macro_task))
-            self.macro_tick = 0
+            await self.choose_macro_task()
 
         if self.macro_task.is_ready():
-            print("Macro PERFORM: " + str(self.macro_task))
-            result = await self.macro_task.perform()
-            successful = result is None
+            successful = await self.perform_macro()
             if successful:
                 self.macro_task = None
+
+    async def choose_macro_task(self):
+        self.macro_task = self.macro_decider.choose(self.macro_options, self.state)
+        self.macro_tick = 0
+        print("Macro CHOOSE: " + str(self.macro_task))
+
+    async def perform_macro(self):
+        print("Macro PERFORM: " + str(self.macro_task))
+        result = await self.macro_task.perform()
+        successful = result is None
+        return successful

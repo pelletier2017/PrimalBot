@@ -1,6 +1,6 @@
 from decider.abstract_decider import AbstractDecider
-from task.macro.zerg_unit_task import *
-from task.macro.zerg_building_task import *
+from task.macro.zerg_unit import *
+from task.macro.zerg_building import *
 from sc2.constants import HATCHERY, SPAWNINGPOOL, OVERLORD, DRONE
 
 
